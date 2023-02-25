@@ -38,16 +38,18 @@ trait TagRelations
     ): HasOneThrough {
 
         return (new Tag(
-            false,
-            'one',
-            $this,
-            $target,
-            $through,
-            $throughId,
-            $select,
-            $status,
-            $modelModel ?: $this->modelModelClass,
-            $tagModel ?: $this->tagModelClass))->getRelation();
+                false,
+                'one',
+                $this,
+                $target,
+                $through,
+                $throughId,
+                $select,
+                $status,
+                $modelModel ?: $this->modelModelClass,
+                $tagModel ?: $this->tagModelClass
+            )
+        )->getRelation();
     }
 
     /**
@@ -73,16 +75,18 @@ trait TagRelations
     ): HasOneThrough {
 
         return (new Tag(
-            true,
-            'one',
-            $this,
-            $target,
-            $through,
-            $throughId,
-            $select,
-            $status,
-            $modelModel ?: $this->modelModelClass,
-            $tagModel ?: $this->tagModelClass))->getRelation();
+                true,
+                'one',
+                $this,
+                $target,
+                $through,
+                $throughId,
+                $select,
+                $status,
+                $modelModel ?: $this->modelModelClass,
+                $tagModel ?: $this->tagModelClass
+            )
+        )->getRelation();
     }
 
     /**
@@ -108,16 +112,18 @@ trait TagRelations
     ): HasManyThrough {
 
         return (new Tag(
-            false,
-            'many',
-            $this,
-            $target,
-            $through,
-            $throughId,
-            $select,
-            $status,
-            $modelModel ?: $this->modelModelClass,
-            $tagModel ?: $this->tagModelClass))->getRelation();
+                false,
+                'many',
+                $this,
+                $target,
+                $through,
+                $throughId,
+                $select,
+                $status,
+                $modelModel ?: $this->modelModelClass,
+                $tagModel ?: $this->tagModelClass
+            )
+        )->getRelation();
     }
 
     /**
@@ -143,16 +149,18 @@ trait TagRelations
     ): HasManyThrough {
 
         return (new Tag(
-            true,
-            'many',
-            $this,
-            $target,
-            $through,
-            $throughId,
-            $select,
-            $status,
-            $modelModel ?: $this->modelModelClass,
-            $tagModel ?: $this->tagModelClass))->getRelation();
+                true,
+                'many',
+                $this,
+                $target,
+                $through,
+                $throughId,
+                $select,
+                $status,
+                $modelModel ?: $this->modelModelClass,
+                $tagModel ?: $this->tagModelClass
+            )
+        )->getRelation();
     }
 
     /**
@@ -188,21 +196,23 @@ trait TagRelations
     ): HasOne {
 
         return (new TagThrough(
-            false,
-            'one',
-            $this,
-            $category,
-            $categoryId,
-            $target,
-            $through,
-            $throughId,
-            $categoryThrough,
-            $categoryThroughId,
-            $tableAlias,
-            $select,
-            $status,
-            $modelModel ?: $this->modelModelClass,
-            $tagModel ?: $this->tagModelClass))->getRelation();
+                false,
+                'one',
+                $this,
+                $category,
+                $categoryId,
+                $target,
+                $through,
+                $throughId,
+                $categoryThrough,
+                $categoryThroughId,
+                $tableAlias,
+                $select,
+                $status,
+                $modelModel ?: $this->modelModelClass,
+                $tagModel ?: $this->tagModelClass
+            )
+        )->getRelation();
     }
 
     /**
@@ -238,22 +248,23 @@ trait TagRelations
     ): HasOne {
 
         return (new TagThrough(
-            true,
-            'one',
-            $this,
-            $category,
-            $categoryId,
-            $target,
-            $through,
-            $throughId,
-            $categoryThrough,
-            $categoryThroughId,
-            $tableAlias,
-            $select,
-            $status,
-            $modelModel ?: $this->modelModelClass,
-            $tagModel ?: $this->tagModelClass,
-        ))->getRelation();
+                true,
+                'one',
+                $this,
+                $category,
+                $categoryId,
+                $target,
+                $through,
+                $throughId,
+                $categoryThrough,
+                $categoryThroughId,
+                $tableAlias,
+                $select,
+                $status,
+                $modelModel ?: $this->modelModelClass,
+                $tagModel ?: $this->tagModelClass,
+            )
+        )->getRelation();
     }
 
     /**
@@ -289,21 +300,23 @@ trait TagRelations
     ): HasMany {
 
         return (new TagThrough(
-            false,
-            'many',
-            $this,
-            $category,
-            $categoryId,
-            $target,
-            $through,
-            $throughId,
-            $categoryThrough,
-            $categoryThroughId,
-            $tableAlias,
-            $select,
-            $status,
-            $modelModel ?: $this->modelModelClass,
-            $tagModel ?: $this->tagModelClass))->getRelation();
+                false,
+                'many',
+                $this,
+                $category,
+                $categoryId,
+                $target,
+                $through,
+                $throughId,
+                $categoryThrough,
+                $categoryThroughId,
+                $tableAlias,
+                $select,
+                $status,
+                $modelModel ?: $this->modelModelClass,
+                $tagModel ?: $this->tagModelClass
+            )
+        )->getRelation();
     }
 
     /**
@@ -339,22 +352,22 @@ trait TagRelations
     ): HasMany {
 
         return (new TagThrough(
-            true,
-            'many',
-            $this,
-            $category,
-            $categoryId,
-            $target,
-            $through,
-            $throughId,
-            $categoryThrough,
-            $categoryThroughId,
-            $tableAlias,
-            $select,
-            $status,
-            $modelModel ?: $this->modelModelClass,
-            $tagModel ?: $this->tagModelClass,
-        )
+                true,
+                'many',
+                $this,
+                $category,
+                $categoryId,
+                $target,
+                $through,
+                $throughId,
+                $categoryThrough,
+                $categoryThroughId,
+                $tableAlias,
+                $select,
+                $status,
+                $modelModel ?: $this->modelModelClass,
+                $tagModel ?: $this->tagModelClass,
+            )
         )->getRelation();
     }
 }

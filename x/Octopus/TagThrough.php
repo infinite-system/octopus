@@ -69,13 +69,6 @@ class TagThrough
     protected string|null $target;
 
     /**
-     * Target class name.
-     *
-     * @var string|null
-     */
-    protected string|null $originalTarget;
-
-    /**
      * Through class name.
      *
      * @var string|null
@@ -583,7 +576,11 @@ class TagThrough
         $traits = _class_uses_deep($this->targetClass);
 
         if (isset($traits['Illuminate\Database\Eloquent\SoftDeletes']) && $this->hasTarget()) {
-            $deletedAtField = defined("$this->targetClass::DELETED_AT") ? $this->targetClass::DELETED_AT : 'deleted_at';
+
+            $deletedAtField = defined("$this->targetClass::DELETED_AT")
+                ? $this->targetClass::DELETED_AT
+                : 'deleted_at';
+
             $this->relation
                 ->withTrashed()
                 ->whereNull("$this->tableAlias.$deletedAtField");

@@ -154,7 +154,6 @@ class Tag
      */
     protected string $hasRelation;
 
-
     /**
      * Eloquent built in has relation class name.
      *
@@ -163,7 +162,6 @@ class Tag
      * @var HasOneThrough|HasManyThrough
      */
     protected HasOneThrough|HasManyThrough $relation;
-
 
     /**
      * Target model instance.
@@ -186,7 +184,6 @@ class Tag
      * @var int
      */
     protected int $throughType;
-
 
     /**
      * Construct relationship instance.
@@ -225,7 +222,6 @@ class Tag
         $this->targetClass = $this->qualifyTargetModel($this->target);
         $this->targetModel = new ($this->targetClass)();
 
-
         // Get the original target table
         $this->targetTable = $this->targetModel->getTable();
 
@@ -251,7 +247,8 @@ class Tag
             !$this->inverse ? $this->targetKey : $this->sourceKey,
             !$this->inverse ? $this->sourceKey : $this->targetKey,
             !$this->inverse ? 'target_id' : 'source_id'
-        )// Connect modal tag types
+        )
+        // Connect modal tag types
         ->where("$this->tagTable.source_type", $this->getModelId(!$this->inverse ? $this->self : $this->targetClass))
             ->where("$this->tagTable.target_type", $this->getModelId(!$this->inverse ? $this->targetClass : $this->self))
             ->where("$this->tagTable.thru_type", $this->throughType)
@@ -259,10 +256,11 @@ class Tag
             ->whereIn("$this->tagTable.status", $this->status)
             // Select
             ->select(array_merge($this->select, [
-                // This field has to be present for modal tag to get the reference id
-                "$this->tagTable.id as __tag_id",
-                "$this->tagTable.status as __tag_status"
-            ]));
+                    // This field has to be present for modal tag to get the reference id
+                    "$this->tagTable.id as __tag_id",
+                    "$this->tagTable.status as __tag_status"
+                ])
+            );
 
     }
 
