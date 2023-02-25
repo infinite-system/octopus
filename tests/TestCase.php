@@ -15,14 +15,8 @@ use Tests\Models\ModalTag;
 
 use Tests\Models\User;
 use Tests\Models\Order;
-use Tests\Models\PaymentSource;
-use Tests\Models\PaymentTransaction;
 use Tests\Models\UserProfile;
-use Tests\Models\Website;
-use Tests\Models\Location;
 use Tests\Models\Contact;
-use Tests\Models\Category;
-use Illuminate\Support\Facades\Event;
 
 define('USER_SALES_CONTACT', 1);
 define('USER_PRIMARY_CONTACT', 2);
@@ -50,7 +44,6 @@ abstract class TestCase extends Base
         parent::setUp();
         $this->createApplication();
 
-//        __showQueries();
         $config = require __DIR__ . '/config/database.php';
 
         $db = new DB();
@@ -272,8 +265,8 @@ abstract class TestCase extends Base
         _tagCategory($categoryTag7->id, 'UserProfile', 31);
         _tagCategory($categoryTag8->id, 'UserProfile', 31);
 
-
-//        dump(ModalTag::get()->toArray());
+        // for debugging purposes
+        // dump(ModalTag::get()->toArray());
 
         Model::reguard();
     }
