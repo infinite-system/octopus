@@ -51,7 +51,7 @@ trait TagRelations
     }
 
     /**
-     * Tag one relationship.
+     * Tag one inverse relationship.
      *
      * @param string|null $target
      * @param string|null $through
@@ -206,7 +206,7 @@ trait TagRelations
     }
 
     /**
-     * Tag one through reverse relationship.
+     * Tag one through inverse relationship.
      *
      * @param string $category
      * @param mixed $categoryId
@@ -307,7 +307,7 @@ trait TagRelations
     }
 
     /**
-     * Tag many through relationship.
+     * Tag many through inverse relationship.
      *
      * @param string $category
      * @param mixed $categoryId
