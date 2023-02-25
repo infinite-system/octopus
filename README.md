@@ -14,27 +14,27 @@ Provided functions:
 ```php
 // Simple direct Model connections
 
-// Single connection
+// To one
 $this->tagOne(TargetModel): HasOneThrough
-// Single connection reversed
+// To one inversed
 $this->tagOneInverse(SourceModel): HasOneThrough
 
 // To many
 $this->tagMany(TargetModel): HasManyThrough
-// To many reversed
+// To many inversed
 $this->tagManyInverse(SourceModel): HasManyThrough
 
 // Neuron mapping of connections
 
 // To one through a Neuron categorized connection
-$this->tagOneThrough(Category, [Categorie Ids], TargetModel): HasOne
+$this->tagOneThrough(Category, [Category Ids], TargetModel): HasOne
 // To one through an inversed Neuron categorized connection
-$this->tagOneThroughInverse(Category, [Categorie Ids], SourceModel): HasOne
+$this->tagOneThroughInverse(Category, [Category Ids], SourceModel): HasOne
 
 // To many through a Neuron categorized connection
-$this->tagManyThrough(Category, [Categories], TargetModel): HasMany
+$this->tagManyThrough(Category, [Category Ids], TargetModel): HasMany
 // To many through an inversed Neuron categorized connection
-$this->tagManyThroughInverse(Category, [Categories], SourceModel): HasMany
+$this->tagManyThroughInverse(Category, [Category Ids], SourceModel): HasMany
 ```
 
 Octopus is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
