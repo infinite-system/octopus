@@ -33,5 +33,4 @@ class CategoryTest extends TestCase
         $this->assertEquals([28,29], $user->filling_user_profiles->pluck('id')->all());
     }
 
-
 }

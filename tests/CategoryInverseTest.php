@@ -45,8 +45,6 @@ class CategoryInverseTest extends TestCase
         $this->assertEquals([19,20], $user->many_users_from_filling->pluck('id')->all());
     }
 
-    // Eager loading tests
-
     public function testEagerCategoryOneInverse()
     {
         $userProfile = UserProfile::where('id', 24)->with('one_user_from_filling')->first();

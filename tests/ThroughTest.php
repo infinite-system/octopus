@@ -10,14 +10,12 @@ class ThroughTest extends TestCase
     public function testEagerLoadingOneThrough()
     {
         $user = User::where('id', 4)->with('sales_contact')->first();
-
         $this->assertEquals(11, $user->sales_contact->id);
     }
 
     public function testEagerLoadingOneThroughDifferentSet()
     {
         $user = User::where('id', 6)->with('sales_contact')->first();
-
         $this->assertEquals(12, $user->sales_contact->id);
     }
 
@@ -33,8 +31,6 @@ class ThroughTest extends TestCase
         $this->assertEquals([12, 13, 14, 15], $user->sales_and_primary_contacts->pluck('id')->all());
     }
 
-
-
     public function testEagerLoadingMultipleThroughAndMultipleIdsDifferentSet()
     {
         $user = User::where('id', 7)->with('sales_and_primary_contacts')->first();
@@ -44,14 +40,12 @@ class ThroughTest extends TestCase
     public function testLazyLoadingOneThrough()
     {
         $user = User::where('id', 4)->first();
-
         $this->assertEquals(11, $user->sales_contact->id);
     }
 
     public function testLazyLoadingOneThroughDifferentSet()
     {
         $user = User::where('id', 6)->first();
-
         $this->assertEquals(12, $user->sales_contact->id);
     }
 
