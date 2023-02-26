@@ -411,24 +411,30 @@ class TagThrough
             ]
             : $this->select;
 
-        $this->relation->select(array_merge(
-                $selectFields,
-                !$this->hasTarget() ?
-                    // Select nothing more if there is no target model * table.
-                    [] :
-                    // There is a target model & table? Then select detailed
-                    // useful columns from intermediate connection tables.
-                    [
-                        ...($this->target === 'any' ? ["mt_$this->targetTable.source_id as __source_id"] : []),
-                        // Note! that 'source_id' field has to be present for the tag
-                        // so that eloquent can merge the relationships
-                        "$this->tagTable.source_id",
-                        "$this->tagTable.id as __tag_category_id",
-                        "$this->tagTable.status as __tag_category_status",
-                        "mt_$this->targetTable.id as __tag_id",
-                        "mt_$this->targetTable.status as __tag_status"
-                    ]
-            )
+        // Note! that 'source_id' field has to be present for the tag
+        // so that eloquent can merge the relationships
+        $targetRequiredField = "$this->tagTable.source_id";
+
+        $targetUsefulFields = [
+            ...($this->target === 'any'
+                    ? ["mt_$this->targetTable.source_id as __source_id"]
+                    : []
+                ),
+            "mt_$this->targetTable.id as __tag_id",
+            "mt_$this->targetTable.status as __tag_status"
+        ];
+
+        $tagUsefulFields = [
+            "$this->tagTable.id as __tag_category_id",
+            "$this->tagTable.status as __tag_category_status",
+        ];
+
+        $targetFields = $this->hasTarget()
+            ? [$targetRequiredField, ...$targetUsefulFields]
+            : [];
+
+        $this->relation->select(
+            array_merge($selectFields, $targetFields, $tagUsefulFields)
         );
     }
 
@@ -506,6 +512,7 @@ class TagThrough
      * @return void
      */
     protected function buildSelectInverse() {
+
         $selectFields = $this->select === null
             ? [
                 !$this->hasTarget()
@@ -513,17 +520,28 @@ class TagThrough
                     : "$this->tableAlias.*"
             ]
             : $this->select;
-        $this->relation->select(array_merge($selectFields, $this->hasTarget() ? [
-            // 'target_id' field has to be present for eloquent to be able to get
-            // the reference id and build other relationships
-            $this->connectKeyFull,
-            // these are other intermediary table ids that are useful
-            "$this->tagTable.id as __tag_id",
-            "$this->tagTable.status as __tags_status",
+
+        // 'target_id' field has to be present for eloquent to be able to get
+        // the reference id and build other relationships
+        $targetRequiredField = "$this->tagTable.target_id";
+
+        $targetUsefulFields = [
             "mt_$this->targetTable.id as __tag_category_id",
             "mt_$this->targetTable.status as __tag_category_status"
-        ] : []
-        ));
+        ];
+
+        $tagUsefulFields = [
+            "$this->tagTable.id as __tag_id",
+            "$this->tagTable.status as __tags_status"
+        ];
+
+        $targetFields = $this->hasTarget()
+            ? [$targetRequiredField, ...$targetUsefulFields]
+            : [];
+
+        $this->relation->select(
+            array_merge($selectFields, $targetFields, $tagUsefulFields)
+        );
     }
 
     /**
@@ -570,7 +588,7 @@ class TagThrough
     protected function handleSoftDeletes() {
         // Handle deleted_at parameter
 
-        $traits = _class_uses_deep($this->targetClass);
+        $traits = class_uses_deep($this->targetClass);
 
         if (isset($traits['Illuminate\Database\Eloquent\SoftDeletes']) && $this->hasTarget()) {
 

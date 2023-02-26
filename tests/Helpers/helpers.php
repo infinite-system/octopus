@@ -1,10 +1,11 @@
 <?php
+
 use Tests\Models\ModalTag;
 use Tests\Models\Modal;
 
 /**
  * Tag create function.
- * 
+ *
  * @param $sourceModel
  * @param $sourceId
  * @param $targetModel
@@ -29,7 +30,7 @@ function _tag($sourceModel, $sourceId, $targetModel, $targetId, $thruModel = 0, 
 
 /**
  * Category tag create function.
- * 
+ *
  * @param $sourceId
  * @param $targetModel
  * @param $targetId
@@ -52,34 +53,38 @@ function _tagCategory($sourceId, $targetModel, $targetId, $thruModel = 0, $thruI
     ]);
 }
 
-/**
- * Get inherited traits from parent classes.
- *
- * @param $class
- * @param bool $autoload
- * @return array
- */
-function _class_uses_deep($class, $autoload = true) {
-    $traits = [];
+if (!function_exists('class_uses_deep')) {
 
-    // Get traits of all parent classes
-    do {
-        $traits = array_merge(class_uses($class, $autoload), $traits);
-    } while ($class = get_parent_class($class));
+    /**
+     * Get inherited traits from parent classes.
+     *
+     * @param $class
+     * @param bool $autoload
+     * @return array
+     */
+    function class_uses_deep($class, $autoload = true) {
+        $traits = [];
 
-    // Get traits of all parent traits
-    $traitsToSearch = $traits;
-    while (!empty($traitsToSearch)) {
-        $newTraits = class_uses(array_pop($traitsToSearch), $autoload);
-        $traits = array_merge($newTraits, $traits);
-        $traitsToSearch = array_merge($newTraits, $traitsToSearch);
-    };
+        // Get traits of all parent classes
+        do {
+            $traits = array_merge(class_uses($class, $autoload), $traits);
+        } while ($class = get_parent_class($class));
 
-    foreach ($traits as $trait => $same) {
-        $traits = array_merge(class_uses($trait, $autoload), $traits);
+        // Get traits of all parent traits
+        $traitsToSearch = $traits;
+        while (!empty($traitsToSearch)) {
+            $newTraits = class_uses(array_pop($traitsToSearch), $autoload);
+            $traits = array_merge($newTraits, $traits);
+            $traitsToSearch = array_merge($newTraits, $traitsToSearch);
+        };
+
+        foreach ($traits as $trait => $same) {
+            $traits = array_merge(class_uses($trait, $autoload), $traits);
+        }
+
+        return array_unique($traits);
     }
 
-    return array_unique($traits);
 }
 
 /**
@@ -97,7 +102,7 @@ function getModelId($model) {
  *
  * @return array
  */
-function getModels(){
+function getModels() {
     static $modelsList = [];
     if (empty($modelsList)) {
         $models = Modal::get();
