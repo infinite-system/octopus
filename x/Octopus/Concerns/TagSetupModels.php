@@ -139,7 +139,6 @@ trait TagSetupModels
         return $this->modelModel->getTable();
     }
 
-
     /**
      * Qualify which model we are connecting to as target.
      *

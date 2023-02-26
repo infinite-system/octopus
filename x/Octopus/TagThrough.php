@@ -140,7 +140,6 @@ class TagThrough
      */
     protected string $hasRelation;
 
-
     /**
      * Eloquent built in has relation class name.
      *
@@ -184,7 +183,6 @@ class TagThrough
      * @var int
      */
     protected int $categoryThroughType;
-
 
     /**
      * Connect key depends on inverse param.
@@ -302,7 +300,6 @@ class TagThrough
 
         $this->resetTargetTable();
     }
-
 
     /**
      * Build tag through relationship.
@@ -436,7 +433,6 @@ class TagThrough
         );
     }
 
-
     /**
      * Build inverse relationship.
      *
@@ -450,7 +446,6 @@ class TagThrough
 
         $this->buildSelectInverse();
     }
-
 
     /**
      * Join to target model inverse.
@@ -506,7 +501,6 @@ class TagThrough
 
     }
 
-
     /**
      * Build select statement for the inverse relationship.
      *
@@ -533,6 +527,11 @@ class TagThrough
         ));
     }
 
+    /**
+     * Table alias exists.
+     *
+     * @return bool
+     */
     protected function hasTableAlias() {
         return $this->tableAlias !== null;
     }
@@ -563,7 +562,6 @@ class TagThrough
     protected function hasTarget() {
         return $this->target !== null;
     }
-
 
     /**
      * Handle soft deletes if they are enabled in target model.

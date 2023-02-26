@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Illuminate\Database\Eloquent\Relations\HasOneThrough;
 
-
 class Tag
 {
     use Concerns\TagSetupModels;
@@ -177,7 +176,6 @@ class Tag
      */
     protected string $targetClass;
 
-
     /**
      * Through type id.
      *
@@ -263,7 +261,6 @@ class Tag
             );
 
     }
-
 
     /**
      * Return built relation.
