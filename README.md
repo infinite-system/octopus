@@ -2,7 +2,7 @@
 
 ## Octopus - Infinite Connectivity System
 
-Octopus is Laravel Eloquent Extension for Infinite Polymorphic Relationship Interface.
+**Octopus** is a Laravel Eloquent Extension for Infinite Polymorphic Relationship Interface.
 
 Octopus is accessible, powerful, and provides connectivity required for large, robust applications.
 
