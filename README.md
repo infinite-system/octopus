@@ -10,7 +10,8 @@ Octopus is accessible, powerful, and provides connectivity required for large, r
 
 Octopus allows any Model to connect to any other model on the fly. The core of Octopus is a unified partitioned table called Tags, that contains all the connections between tables, allowing a pure database design, where tables remain pure and decoupled from each other, yet are able to communicate and connect to each other seamlessly.
 
-Provided functions:
+### Provided Functions
+Use within your Models:
 ```php
 // Simple direct Model connections
 
@@ -35,6 +36,17 @@ $this->tagOneThroughInverse(Category, [Category Ids], SourceModel): HasOne
 $this->tagManyThrough(Category, [Category Ids], TargetModel): HasMany
 // To many through an inversed Neuron categorized connection
 $this->tagManyThroughInverse(Category, [Category Ids], SourceModel): HasMany
+```
+
+### Install
+```
+git clone git@github.com:infinite-system/octopus.git
+
+composer install
+```
+### Run Tests
+```shell
+vendor/bin/phpunit --testdox
 ```
 
 Octopus is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
