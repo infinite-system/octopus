@@ -217,7 +217,7 @@ class Tag
         $this->sourceModel = $source;
 
         $this->target = $target;
-        $this->targetClass = $this->qualifyTargetModel($this->target);
+        $this->targetClass = $this->qualifyTargetClass($this->target);
         $this->targetModel = new ($this->targetClass)();
 
         // Get the original target table
@@ -227,7 +227,7 @@ class Tag
         $this->throughType = $this->qualifyThroughType($through);
         $this->throughId = !is_array($throughId) ? [$throughId] : $throughId;
 
-        $this->select = empty($select) ? [$this->targetTable . '.*'] : $select;
+        $this->select = empty($select) ? ["$this->targetTable.*"] : $select;
         $this->status = !is_array($status) ? [$status] : $status;
 
         $this->sourceKey = $this->sourceModel->getKeyName();
@@ -238,7 +238,7 @@ class Tag
         $this->inverse = $inverse;
 
         // Create relation of type HasOne or HasMany
-        $this->relation = $source->{$hasRelation}(
+        $this->relation = $source->$hasRelation(
             $this->targetClass,
             $this->tagModelClass,
             !$this->inverse ? 'source_id' : 'target_id', // Modal tag source or target ids
@@ -246,15 +246,15 @@ class Tag
             !$this->inverse ? $this->sourceKey : $this->targetKey,
             !$this->inverse ? 'target_id' : 'source_id'
         )
-        // Connect modal tag types
-        ->where("$this->tagTable.source_type", $this->getModelId(!$this->inverse ? $this->self : $this->targetClass))
+            // Connect
+            ->where("$this->tagTable.source_type", $this->getModelId(!$this->inverse ? $this->self : $this->targetClass))
             ->where("$this->tagTable.target_type", $this->getModelId(!$this->inverse ? $this->targetClass : $this->self))
             ->where("$this->tagTable.thru_type", $this->throughType)
             ->whereIn("$this->tagTable.thru_id", $this->throughId)
             ->whereIn("$this->tagTable.status", $this->status)
             // Select
             ->select(array_merge($this->select, [
-                    // This field has to be present for modal tag to get the reference id
+                    // useful tag information
                     "$this->tagTable.id as __tag_id",
                     "$this->tagTable.status as __tag_status"
                 ])

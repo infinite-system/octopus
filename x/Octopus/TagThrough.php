@@ -247,7 +247,7 @@ class TagThrough
 
         $this->tableAlias = $tableAlias;
         $this->target = $target;
-        $this->targetClass = $this->qualifyTargetModel($this->target);
+        $this->targetClass = $this->qualifyTargetClass($this->target);
         $this->targetModel = new ($this->targetClass)();
 
 

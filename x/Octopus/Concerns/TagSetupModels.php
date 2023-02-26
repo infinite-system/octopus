@@ -145,7 +145,7 @@ trait TagSetupModels
      * @param $target
      * @return string
      */
-    protected function qualifyTargetModel($target) {
+    protected function qualifyTargetClass($target) {
         return match ($target) {
             'any', null => $this->tagModelClass,
             default => $target,
