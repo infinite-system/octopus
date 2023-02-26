@@ -40,7 +40,7 @@ $this->tagManyThroughInverse(Category, [Category Ids], SourceModel): HasMany
 
 ### Install
 ```
-git clone git@github.com:infinite-system/octopus.git
+git clone https://github.com/infinite-system/octopus.git
 
 composer install
 ```
