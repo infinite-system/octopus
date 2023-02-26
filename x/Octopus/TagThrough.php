@@ -246,17 +246,14 @@ class TagThrough
         $this->categoryId = !is_array($categoryId) ? [$categoryId] : $categoryId;
 
         $this->tableAlias = $tableAlias;
+
         $this->target = $target;
         $this->targetClass = $this->qualifyTargetClass($this->target);
         $this->targetModel = new ($this->targetClass)();
-
-
         // Get the original target table
         $this->targetTable = $this->targetModel->getTable();
-
         // Switch the table to tags table to establish connection via eloquent
         $this->targetModel->setTable($this->tagTable);
-
 
         $this->throughType = $this->qualifyThroughType($through);
         $this->throughId = !is_array($throughId) ? [$throughId] : $throughId;
@@ -270,11 +267,9 @@ class TagThrough
         $this->sourceKey = $this->sourceModel->getKeyName();
         $this->targetKey = $this->targetModel->getKeyName();
 
-
         $this->query = $this->targetModel->newQuery();
 
-        $this->hasRelation = strtolower($oneOrMany) === 'one' ? HasOne::class : HasMany::class;
-
+        $this->hasRelation = $oneOrMany === 'one' ? HasOne::class : HasMany::class;
 
         $this->inverse = $inverse;
         $this->connectKey = !$this->inverse ? 'source_id' : 'target_id';

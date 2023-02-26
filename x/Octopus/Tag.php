@@ -223,7 +223,6 @@ class Tag
         // Get the original target table
         $this->targetTable = $this->targetModel->getTable();
 
-
         $this->throughType = $this->qualifyThroughType($through);
         $this->throughId = !is_array($throughId) ? [$throughId] : $throughId;
 
@@ -233,7 +232,7 @@ class Tag
         $this->sourceKey = $this->sourceModel->getKeyName();
         $this->targetKey = $this->targetModel->getKeyName();
 
-        $hasRelation = strtolower($oneOrMany) === 'one' ? 'hasOneThrough' : 'hasManyThrough';
+        $hasRelation = $oneOrMany === 'one' ? 'hasOneThrough' : 'hasManyThrough';
 
         $this->inverse = $inverse;
 
