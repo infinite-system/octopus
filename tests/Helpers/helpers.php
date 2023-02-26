@@ -52,7 +52,6 @@ function _tagCategory($sourceId, $targetModel, $targetId, $thruModel = 0, $thruI
     ]);
 }
 
-
 /**
  * Get inherited traits from parent classes.
  *
