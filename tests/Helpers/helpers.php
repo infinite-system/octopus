@@ -102,7 +102,6 @@ function getModels(){
     static $modelsList = [];
     if (empty($modelsList)) {
         $models = Modal::get();
-//        dump($models);
         $modelsList = !empty($models) ? $models->pluck('id', 'name')->toArray() : [];
     }
     return $modelsList;
