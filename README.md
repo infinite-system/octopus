@@ -8,7 +8,7 @@ Octopus is accessible, powerful, and provides connectivity required for large, r
 
 ## What is Octopus?
 
-Octopus allows any Model to connect to any other model on the fly. The core of Octopus is a unified partitioned table called Tags, that contains all the connections between tables, allowing a pure database design, where tables remain pure and decoupled from each other, yet are able to communicate and connect to each other seamlessly.
+Octopus allows any Model to connect to any other Laravel Model on the fly. The core of Octopus is a unified partitioned table called `tags`, that contains all the connections between tables, allowing a pure database design, where tables remain pure and decoupled from each other, yet they are able to communicate and connect to each other seamlessly via a partitioned and indexed "matrix" table.
 
 ### Provided Functions
 Use within your Models:
