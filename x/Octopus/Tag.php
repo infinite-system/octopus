@@ -254,7 +254,7 @@ class Tag
             ->whereIn("$this->tagTable.status", $this->status)
             // Select
             ->select(array_merge($this->select, [
-                    // useful tag information
+                    // Useful tag information
                     "$this->tagTable.id as __tag_id",
                     "$this->tagTable.status as __tag_status"
                 ])
