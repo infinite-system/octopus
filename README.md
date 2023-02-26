@@ -1,4 +1,4 @@
-![octopus-logo-medium](https://user-images.githubusercontent.com/150185/221381948-653918e0-615a-48fb-99a6-aa3b70a75e30.jpg)
+![octopus-logo-medium](https://user-images.githubusercontent.com/150185/221432180-e2f00a0c-e71f-4aca-b983-66cc504c6813.jpg)
 
 ## Octopus - Infinite Connectivity System
 
