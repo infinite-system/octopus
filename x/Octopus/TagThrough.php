@@ -307,10 +307,6 @@ class TagThrough
         $this->whereRelation();
 
         $this->buildSelect();
-
-        $this->handleSoftDeletes();
-
-        $this->resetTargetTable();
     }
 
     /**
