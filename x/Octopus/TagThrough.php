@@ -581,7 +581,6 @@ class TagThrough
      * @return void
      */
     protected function handleSoftDeletes() {
-        // Handle deleted_at parameter
 
         $traits = class_uses_deep($this->targetClass);
 
