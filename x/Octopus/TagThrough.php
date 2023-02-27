@@ -33,7 +33,7 @@ class TagThrough
     protected Model $sourceModel;
 
     /**
-     * Through category class name.
+     * Category class name.
      *
      * @var string
      */
