@@ -19,13 +19,6 @@ class Tag
     protected bool $inverse;
 
     /**
-     * One or many relationships.
-     *
-     * @var string|'one'|'many'
-     */
-    protected string $oneOrMany;
-
-    /**
      * Source model that gets the relationship.
      *
      * @var Model
@@ -38,20 +31,6 @@ class Tag
      * @var string
      */
     protected string $category;
-
-    /**
-     * The category id through which we are connecting.
-     *
-     * @var array|mixed
-     */
-    protected mixed $categoryId;
-
-    /**
-     * Table alias.
-     *
-     * @var string|null
-     */
-    protected mixed $tableAlias;
 
     /**
      * Self parent class name.
@@ -68,13 +47,6 @@ class Tag
     protected string|null $target;
 
     /**
-     * Target class name.
-     *
-     * @var string|null
-     */
-    protected string|null $originalTarget;
-
-    /**
      * Through class name.
      *
      * @var string|null
@@ -87,20 +59,6 @@ class Tag
      * @var array|mixed
      */
     protected mixed $throughId;
-
-    /**
-     * Through class name for category tag.
-     *
-     * @var string
-     */
-    protected string $categoryThrough;
-
-    /**
-     * Through category id or array of ids.
-     *
-     * @var array|mixed
-     */
-    protected mixed $categoryThroughId;
 
     /**
      * Select fields.
@@ -145,16 +103,7 @@ class Tag
     protected Builder $query;
 
     /**
-     * Eloquent built in has relation class name.
-     *
-     * @link \Illuminate\Database\Eloquent\Relations\HasMany
-     * @link \Illuminate\Database\Eloquent\Relations\HasOne
-     * @var string
-     */
-    protected string $hasRelation;
-
-    /**
-     * Eloquent built in has relation class name.
+     * Eloquent built in has relation class instance.
      *
      * @link \Illuminate\Database\Eloquent\Relations\HasManyThrough
      * @link \Illuminate\Database\Eloquent\Relations\HasOneThrough

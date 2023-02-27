@@ -140,7 +140,7 @@ class TagThrough
     protected string $hasRelation;
 
     /**
-     * Eloquent built in has relation class name.
+     * Eloquent built in has relation class instance.
      *
      * @link \Illuminate\Database\Eloquent\Relations\HasMany
      * @link \Illuminate\Database\Eloquent\Relations\HasOne
