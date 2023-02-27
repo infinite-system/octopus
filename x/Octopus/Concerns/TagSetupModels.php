@@ -7,13 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 trait TagSetupModels
 {
     /**
-     * Integer array of models.
-     *
-     * @var int[]
-     */
-    public array $models = [];
-
-    /**
      * Default model class to use as tags model.
      *
      * @var string
