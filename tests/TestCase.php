@@ -22,6 +22,7 @@ define('USER_SALES_CONTACT', 1);
 define('USER_PRIMARY_CONTACT', 2);
 define('BILLING_PROFILE', 3);
 define('FILLING_PROFILE', 4);
+define('ORDER_CATEGORY', 5);
 
 abstract class TestCase extends Base
 {
@@ -236,6 +237,10 @@ abstract class TestCase extends Base
         _tag('UserProfile', 21, 'Order', 31);
         _tag('UserProfile', 22, 'Order', 32);
 
+        $orderCategoryTag = _tag('Order', 31, 'Category', ORDER_CATEGORY);
+	    _tagCategory($orderCategoryTag->id, 'UserProfile', 24);
+	    _tagCategory($orderCategoryTag->id, 'User', 21);
+	    _tagCategory($orderCategoryTag->id, 'Contact', 11);
 
         // for category testing
         $categoryTag = _tag('User', 15, 'Category', BILLING_PROFILE);

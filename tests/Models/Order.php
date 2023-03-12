@@ -9,7 +9,7 @@ class Order extends Model
     use SoftDeletes;
 
     function user_profile() {
-        this->tagOne(UserProfile::class);
+        return $this->tagOne(UserProfile::class);
     }
 
     function billing_profile() {
@@ -32,4 +32,12 @@ class Order extends Model
         return $this->tagOneThrough(Category::class, (int) getenv('ORDERS_BILLING_PROFILE'), Contact::class)
             ->where('contacts.status', 1);
     }
+
+	function order_category() {
+		return $this->tagOneThrough(Category::class, ORDER_CATEGORY);
+	}
+
+	function order_category_any() {
+		return $this->tagManyThrough(Category::class, ORDER_CATEGORY, 'any');
+	}
 }
